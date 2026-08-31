@@ -46,7 +46,10 @@ DEFINE_string(ns, "", "Robot namespace");
 DEFINE_bool(dock, false, "Send a dock command");
 DEFINE_bool(undock, false, "Send an undock command");
 DEFINE_int32(berth, 1, "Berth ID (1 = left, 2 = right)");
-DEFINE_bool(return_dock, false, "Return to dock from afar");
+// Cargo handling leaves Astrobee outside the normal docking approach
+// tolerance. Make the command-line tool return to the approach pose by
+// default, while retaining -noreturn_dock for close-only docking.
+DEFINE_bool(return_dock, true, "Return to dock from afar");
 
 // Timeout values
 DEFINE_double(connect, 10.0, "Action connect timeout");
